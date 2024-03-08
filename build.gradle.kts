@@ -22,8 +22,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	// База данных
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtimeOnly("com.h2database:h2")
+	implementation("org.springframework.data:spring-data-mongodb")
+	implementation("org.mongodb:mongo-java-driver:3.12.10")
+
+
 
 	// Утилиты
 	implementation("org.springframework.boot:spring-boot-starter-validation")
