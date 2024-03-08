@@ -7,7 +7,7 @@ public interface UserService {
     /**
      * Сохранение пользователя
      */
-    public void save(User user);
+    public void insert(User user);
 
     /**
      * Создание пользователя

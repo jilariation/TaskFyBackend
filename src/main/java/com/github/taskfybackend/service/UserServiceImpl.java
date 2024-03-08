@@ -12,27 +12,27 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
-    private final UserRepository repository;
+    private final UserRepository userRepository;
 
     @Override
-    public void save(User user) {
-        repository.save(user);
+    public void insert(User user) {
+        userRepository.insert(user);
     }
     @Override
     public void create(User user) {
-        if (repository.existsByUsername(user.getUsername())) {
+        if (userRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Пользователь с таким именем уже существует");
         }
 
-        if (repository.existsByEmail(user.getEmail())) {
+        if (userRepository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Пользователь с таким email уже существует");
         }
 
-        save(user);
+        insert(user);
     }
     @Override
     public User getByUsername(String username) {
-        return repository.findByUsername(username)
+        return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
 
     }
@@ -51,6 +51,6 @@ public class UserServiceImpl implements UserService{
     public void getAdmin() {
         var user = getCurrentUser();
         user.setRole(Role.ROLE_ADMIN);
-        save(user);
+        insert(user);
     }
 }
