@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService{
     public void insert(User user) {
         userRepository.insert(user);
     }
+
     @Override
     public void create(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
