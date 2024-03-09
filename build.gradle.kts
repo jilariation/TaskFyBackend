@@ -23,7 +23,7 @@ dependencies {
 
 	// База данных
 	implementation("org.springframework.data:spring-data-mongodb")
-	implementation("org.mongodb:mongo-java-driver:3.12.10")
+	implementation("org.mongodb:mongodb-driver-sync:4.11.1")
 
 
 
