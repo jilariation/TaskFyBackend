@@ -5,6 +5,7 @@ import com.github.taskfybackend.model.dto.SignUpRequest;
 import org.springframework.http.ResponseEntity;
 
 public interface AuthenticationService {
+
     /**
      * Регистрирует пользователя
      * @param request Запрос на регистрацию

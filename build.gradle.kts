@@ -19,18 +19,17 @@ repositories {
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-
 	// База данных
 	implementation("org.springframework.data:spring-data-mongodb")
 	implementation("org.mongodb:mongodb-driver-sync:4.11.1")
 
-
-
 	// Утилиты
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.apache.commons:commons-lang3")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
 
 	// Безопасность
 	implementation("org.springframework.boot:spring-boot-starter-security")
@@ -38,9 +37,6 @@ dependencies {
 	// Тестирование
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
-
 }
 
 tasks.withType<Test> {

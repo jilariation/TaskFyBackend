@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, Long> {
+
     /**
      * Находит всех пользователей по их имени
      * @param username Имя пользователя

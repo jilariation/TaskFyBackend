@@ -1,10 +1,8 @@
 package com.github.taskfybackend.service;
 
-import com.github.taskfybackend.model.Role;
 import com.github.taskfybackend.model.User;
 import com.github.taskfybackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,7 @@ public class UserServiceImpl implements UserService{
             throw new RuntimeException("Пользователь с таким именем уже существует");
         }
 
-        if (userRepository.existsByEmail(user.getEmail())) {
+        if (userRepository.existsByEmail(user.email())) {
             throw new RuntimeException("Пользователь с таким email уже существует");
         }
 
@@ -41,17 +39,5 @@ public class UserServiceImpl implements UserService{
     public UserDetailsService userDetailsService() {
         return this::getByUsername;
     }
-    @Override
-    public User getCurrentUser() {
-        var username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return getByUsername(username);
-    }
 
-    @Override
-    @Deprecated
-    public void getAdmin() {
-        var user = getCurrentUser();
-        user.setRole(Role.ROLE_ADMIN);
-        insert(user);
-    }
 }
