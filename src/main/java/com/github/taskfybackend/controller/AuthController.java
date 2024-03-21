@@ -1,5 +1,6 @@
 package com.github.taskfybackend.controller;
 
+import com.github.taskfybackend.model.User;
 import com.github.taskfybackend.model.dto.SignInRequest;
 import com.github.taskfybackend.model.dto.SignUpRequest;
 import com.github.taskfybackend.service.AuthenticationServiceImpl;
@@ -18,12 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Tag(name = "Аутентификация")
 public class AuthController {
+
     private final AuthenticationServiceImpl authenticationService;
 
     @Operation(summary = "Регистрация пользователя")
     @PostMapping("/sign-up")
     public ResponseEntity<String> signUp(@RequestBody @Valid SignUpRequest request) {
         return authenticationService.signUp(request);
+
     }
 
     @Operation(summary = "Авторизация пользователя")
@@ -31,4 +34,5 @@ public class AuthController {
     public ResponseEntity<String> signIn(@RequestBody @Valid SignInRequest request) {
         return authenticationService.signIn(request);
     }
+
 }

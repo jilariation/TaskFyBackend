@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExampleController {
     private final UserServiceImpl service;
 
-    @GetMapping
+    @GetMapping("/hello")
     @Operation(summary = "Доступен только авторизованным пользователям")
     public String example() {
         return "Hello, world!";

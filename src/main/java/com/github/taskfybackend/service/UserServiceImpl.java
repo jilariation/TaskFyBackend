@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
+
     private final UserRepository userRepository;
 
     @Override
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void create(User user) {
-        if (userRepository.existsByUsername(user.getUsername())) {
+        if (userRepository.existsByUsername(user.username())) {
             throw new RuntimeException("Пользователь с таким именем уже существует");
         }
 
@@ -40,4 +41,6 @@ public class UserServiceImpl implements UserService{
         return this::getByUsername;
     }
 
+    public void getAdmin() {
+    }
 }
